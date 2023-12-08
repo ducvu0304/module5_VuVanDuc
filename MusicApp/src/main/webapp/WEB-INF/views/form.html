@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Bootstrap5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+
+        }
+
+
+        .input-wrapper {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        label {
+            width: 100px;
+        }
+
+        input {
+            flex: 1;
+            height: 40px;
+
+        }
+
+        .btn-submit {
+            width: 300px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+<h1 th:if="${form == 'register'}"  class="text-center mt-5">Register Form</h1>
+<h1 th:unless="${form == 'register'}"  class="text-center mt-5">Edit Form</h1>
+<section class="container ">
+    <form th:action="@{/save}" class="w-100 mt-3" th:object="${customer}" method="post">
+        <div class="input-wrapper">
+            <label for="firstName">FirstName</label>
+            <input th:field="*{firstName}" type="text" name="firstName" id="firstName">
+        </div>
+        <div class="input-wrapper">
+            <label for="lastName">Last name</label>
+            <input th:field="*{lastName}" type="text" name="lastName" id="lastName">
+        </div>
+        <div class="input-wrapper">
+            <label for="email">Email</label>
+            <input th:field="*{email}" type="email" name="email" id="email">
+        </div>
+        <div class="input-wrapper">
+            <label for="dob">Birth date</label>
+            <input th:field="*{dob}" type="date" name="dob" id="dob">
+        </div>
+        <div class="input-wrapper">
+            <label for="address">Address</label>
+            <input th:field="*{address}" type="text" name="address" id="address">
+        </div>
+        <div class="input-wrapper">
+            <label>Gender</label>
+            <div class="d-flex align-items-center">
+                <input th:field="*{gender}" name="gender" type="radio" value="MALE" id="male">
+                <label for="male" class="mx-2">Male</label>
+                <input th:field="*{gender}" name="gender" type="radio" value="FEMALE" id="female">
+                <label for="female" class="mx-2">Female</label>
+            </div>
+
+        </div>
+        <div class="text-center">
+            <input type="submit" value="Sign Up"  class="btn-submit" >
+        </div>
+    </form>
+</section>
+
+</body>
+</html>
