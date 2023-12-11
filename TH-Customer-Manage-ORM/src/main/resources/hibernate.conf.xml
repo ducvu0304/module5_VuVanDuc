@@ -14,5 +14,7 @@
 
         <!-- Mapping Table -->
         <mapping class="rikkei.thcustomermanageorm.model.Customer"/>
+        <mapping class="rikkei.thcustomermanageorm.model.Product"/>
+        <mapping class="rikkei.thcustomermanageorm.model.Employee"/>
     </session-factory>
 </hibernate-configuration>

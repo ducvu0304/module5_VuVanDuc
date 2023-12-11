@@ -8,7 +8,6 @@ import java.util.Date;
 @Entity
 @Table(name = "customer")
 public class Customer {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -20,7 +19,7 @@ public class Customer {
     private String address;
     @Column(name = "phone_number")
     private String phoneNumber;
-    @Column(name = "birth_day")
+    @Column(name = "birth_day", nullable = true)
     private String birthday;
 
     public Customer() {

@@ -18,12 +18,16 @@ public class CustomerDaoImpl implements CustomerDao{
 
     @Override
     public List<Customer> getCustomerList() {
+        int firstResult = 0;
+        int maxResult = 4;
         List<Customer> customerList = new ArrayList<>();
         try {
             session = HibernateUtil.getSessionFactory().openSession();
 
             String hql = "FROM Customer";
             Query<Customer> query = session.createQuery(hql);
+            query.setFirstResult(firstResult);
+            query.setMaxResults(maxResult);
             customerList = query.getResultList();
 
         }catch (HibernateException e) {
@@ -58,7 +62,9 @@ public class CustomerDaoImpl implements CustomerDao{
     public void updateCustomer(Customer customer) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
             session.update(customer);
+            transaction.commit();
         }catch (HibernateException e) {
             e.printStackTrace();
         }finally {
